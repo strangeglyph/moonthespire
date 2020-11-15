@@ -1,0 +1,8 @@
+{
+  "modid": "moonthespire",
+  "name": "Moon The Spire",
+  "description": "The moon descends to the spire",
+  "version": "0.1.0",
+  "author_list": ["The M14n community"],
+  "dependencies": ["basemod", "stslib"]
+}
