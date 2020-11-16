@@ -4,7 +4,10 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.*;
+import com.badlogic.gdx.Gdx;
+import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -16,9 +19,13 @@ import org.m14n.moonthespire.cards.MoonDrop;
 import org.m14n.moonthespire.relics.PaleWhiteSphere;
 import org.m14n.moonthespire.relics.TidalLock;
 
+import java.nio.charset.StandardCharsets;
+
 @SpireInitializer
-public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber,  OnStartBattleSubscriber {
-    public static final Logger LOGGER  = LogManager.getLogger(Mod.class.getName());
+public class Mod implements EditCharactersSubscriber, EditCardsSubscriber,
+        EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
+        OnStartBattleSubscriber {
+    public static final Logger LOGGER = LogManager.getLogger(Mod.class.getName());
     private static final String MOD_ID = "MoonTheSpire";
 
     public static String cardPath(String resourcePath) {
@@ -87,8 +94,8 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditR
     public void receiveEditCharacters() {
         LOGGER.info("The moon descends to earth.");
         BaseMod.addCharacter(new MoonCharacter(
-                "The Moon",
-                MoonCharacter.Enums.THE_MOON),
+                        "The Moon",
+                        MoonCharacter.Enums.THE_MOON),
                 uiPath("select-character.png"),
                 charPath("placeholder.png"),
                 MoonCharacter.Enums.THE_MOON);
@@ -132,5 +139,18 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditR
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
         PhaseSystem.reset();
+    }
+
+    @Override
+    public void receiveEditKeywords() {
+        Gson gson = new Gson();
+        String json = Gdx.files.internal(l10nPath("en", "keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
+        com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
+
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                BaseMod.addKeyword(MOD_ID.toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
     }
 }

@@ -1,14 +1,20 @@
 [
   {
     "NAMES": [
-      "Waxing"
+      "waxing"
     ],
     "DESCRIPTION": "This card has an additional effect if your draw pile is larger than your discard pile."
   },
   {
     "NAMES": [
-      "Waning"
+      "waning"
     ],
     "DESCRIPTION": "This card has an additional effect if your discard pile is larger than your draw pile."
+  },
+  {
+    "NAMES": [
+      "prophecy"
+    ],
+    "DESCRIPTION": "Suspends after playing and has additional effects once sufficient cards have been played."
   }
 ]
