@@ -12,6 +12,11 @@ public class TidalLock extends CustomRelic {
     private static final Texture OUTLINE = TextureLoader.getTexture(relicOutlinePath("tidallock.png"));
 
     public TidalLock() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.MAGICAL);
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return DESCRIPTIONS[0];
     }
 }

@@ -2,6 +2,15 @@
   "MoonTheSpire:TidalLock": {
     "NAME": "Tidal Lock",
     "FLAVOR": "As the Moon turns, so must we.",
-    "DESCRIPTION": "Always face the enemies in combat."
+    "DESCRIPTIONS": [
+      "Always face the enemies in combat."
+    ]
+  },
+  "MoonTheSpire:PaleWhiteSphere": {
+    "NAME": "Pale White Sphere",
+    "FLAVOR": "It is pleasantly cool to the touch.",
+    "DESCRIPTIONS": [
+      "When your draw pile is larger than your discard pile, you are #bWaxing and gain 2 Strength. NL If your discard pile is larger than your draw pile, you are #bWaning and gain 2 Dexterity."
+    ]
   }
 }

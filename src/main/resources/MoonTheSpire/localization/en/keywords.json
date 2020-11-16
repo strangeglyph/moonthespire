@@ -1,0 +1,14 @@
+[
+  {
+    "NAMES": [
+      "Waxing"
+    ],
+    "DESCRIPTION": "This card has an additional effect if your draw pile is larger than your discard pile."
+  },
+  {
+    "NAMES": [
+      "Waning"
+    ],
+    "DESCRIPTION": "This card has an additional effect if your discard pile is larger than your draw pile."
+  }
+]

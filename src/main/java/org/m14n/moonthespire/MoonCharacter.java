@@ -17,7 +17,9 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import org.m14n.moonthespire.cards.DiscardDraw;
 import org.m14n.moonthespire.cards.MoonDrop;
+import org.m14n.moonthespire.relics.PaleWhiteSphere;
 import org.m14n.moonthespire.relics.TidalLock;
 
 import java.util.ArrayList;
@@ -87,13 +89,13 @@ public class MoonCharacter extends CustomPlayer {
                 MoonDrop.ID,
                 MoonDrop.ID,
                 MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID,
-                MoonDrop.ID
+                DiscardDraw.ID,
+                DiscardDraw.ID,
+                DiscardDraw.ID,
+                DiscardDraw.ID,
+                DiscardDraw.ID,
+                DiscardDraw.ID,
+                DiscardDraw.ID
         ));
     }
 
@@ -101,7 +103,7 @@ public class MoonCharacter extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         UnlockTracker.markRelicAsSeen(TidalLock.ID);
         return new ArrayList<>(Collections.singletonList(
-                TidalLock.ID
+                PaleWhiteSphere.ID
         ));
     }
 

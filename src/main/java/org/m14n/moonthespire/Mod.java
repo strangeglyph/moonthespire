@@ -3,20 +3,21 @@ package org.m14n.moonthespire;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m14n.moonthespire.cards.AbstractMoonCard;
+import org.m14n.moonthespire.cards.DiscardDraw;
 import org.m14n.moonthespire.cards.MoonDrop;
+import org.m14n.moonthespire.relics.PaleWhiteSphere;
 import org.m14n.moonthespire.relics.TidalLock;
 
 @SpireInitializer
-public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber {
+public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber,  OnStartBattleSubscriber {
     public static final Logger LOGGER  = LogManager.getLogger(Mod.class.getName());
     private static final String MOD_ID = "MoonTheSpire";
 
@@ -106,12 +107,14 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditR
                 });
          */
         BaseMod.addCard(new MoonDrop());
+        BaseMod.addCard(new DiscardDraw());
     }
 
     @Override
     public void receiveEditRelics() {
         LOGGER.info("The moon brings its treasures.");
         BaseMod.addRelicToCustomPool(new TidalLock(), MoonCharacter.Enums.MOON_PURPLE);
+        BaseMod.addRelicToCustomPool(new PaleWhiteSphere(), MoonCharacter.Enums.MOON_PURPLE);
     }
 
     @Override
@@ -124,5 +127,10 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber, EditR
         //BaseMod.loadCustomStringsFile(EventStrings.class, l10nPath("en", "events.json"));
         //BaseMod.loadCustomStringsFile(PotionStrings.class, l10nPath("en", "potions.json"));
         //BaseMod.loadCustomStringsFile(OrbStrings.class, l10nPath("en", "orbs.json"));
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        PhaseSystem.reset();
     }
 }
