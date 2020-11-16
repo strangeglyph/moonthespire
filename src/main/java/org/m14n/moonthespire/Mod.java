@@ -104,17 +104,15 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber,
     @Override
     public void receiveEditCards() {
         LOGGER.info("The moon brings its wisdom.");
-        /* Kinda ain't working
         new AutoAdd(MOD_ID)
                 .packageFilter(AbstractMoonCard.class)
                 .setDefaultSeen(true)
                 .any(CustomCard.class, (info, card) -> {
-                    LOGGER.info("Registering card: " + card.name);
+                    LOGGER.info("Moon | Registering card: " + card.name);
                     BaseMod.addCard(card);
                 });
-         */
-        BaseMod.addCard(new MoonDrop());
-        BaseMod.addCard(new DiscardDraw());
+        //BaseMod.addCard(new MoonDrop());
+        //BaseMod.addCard(new DiscardDraw());
     }
 
     @Override
