@@ -7,5 +7,10 @@
   "MoonTheSpire:DiscardDraw": {
     "NAME": "Discard Draw Pile",
     "DESCRIPTION": "Discard draw pile."
+  },
+  "MoonTheSpire:EbbAndFlow": {
+    "NAME": "Ebb and Flow",
+    "DESCRIPTION": "Discard your hand. NL Waxing: deal 5 damage for each card discarded. NL Waning: then draw that many cards. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Discard your hand. NL Waxing: deal 8 damage for each card discarded. NL Waning: then draw that many cards."
   }
 }
