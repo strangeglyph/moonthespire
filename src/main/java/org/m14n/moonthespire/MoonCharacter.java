@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.m14n.moonthespire.cards.DiscardDraw;
+import org.m14n.moonthespire.cards.EbbAndFlow;
 import org.m14n.moonthespire.cards.MoonDrop;
 import org.m14n.moonthespire.relics.PaleWhiteSphere;
 import org.m14n.moonthespire.relics.TidalLock;
@@ -51,7 +52,7 @@ public class MoonCharacter extends CustomPlayer {
 
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
 
-    private static final String[] orbTextures = new String[] {
+    private static final String[] orbTextures = new String[]{
             Mod.energyPath("layer0.png")
     };
 
@@ -89,9 +90,14 @@ public class MoonCharacter extends CustomPlayer {
                 MoonDrop.ID,
                 MoonDrop.ID,
                 MoonDrop.ID,
-                DiscardDraw.ID,
-                DiscardDraw.ID,
-                DiscardDraw.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
+                EbbAndFlow.ID,
                 DiscardDraw.ID,
                 DiscardDraw.ID,
                 DiscardDraw.ID,
