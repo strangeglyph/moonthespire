@@ -11,8 +11,8 @@ import java.util.Map;
 import static org.m14n.moonthespire.Mod.uiPath;
 
 public class TextureLoader {
-    private static final Map<String, Texture> textures = new HashMap<String, Texture>();
     public static final Logger logger = LogManager.getLogger(TextureLoader.class.getName());
+    private static final Map<String, Texture> textures = new HashMap<String, Texture>();
 
     /**
      * @param textureString - String path to the texture you want to load relative to resources,

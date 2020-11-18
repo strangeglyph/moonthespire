@@ -31,27 +31,14 @@ import static org.m14n.moonthespire.Mod.makeId;
 
 public class MoonCharacter extends CustomPlayer {
 
-    public static class Enums {
-        @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_MOON;
-        @SpireEnum(name = "MOON_PURPLE_COLOR")
-        public static AbstractCard.CardColor MOON_PURPLE;
-        @SpireEnum(name = "MOON_PURPLE_COLOR")
-        @SuppressWarnings("unused")
-        public static CardLibrary.LibraryType LIBRARY_COLOR;
-    }
-
     public static final String ID = makeId("MoonCharacter");
-
     public static final int ENERGY_PER_TURN = 3;
     public static final int STARTING_HP = 75;
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
-
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
-
     private static final String[] orbTextures = new String[]{
             Mod.energyPath("layer0.png")
     };
@@ -209,6 +196,16 @@ public class MoonCharacter extends CustomPlayer {
     @Override
     public String getVampireText() {
         return characterStrings.TEXT[2];
+    }
+
+    public static class Enums {
+        @SpireEnum
+        public static AbstractPlayer.PlayerClass THE_MOON;
+        @SpireEnum(name = "MOON_PURPLE_COLOR")
+        public static AbstractCard.CardColor MOON_PURPLE;
+        @SpireEnum(name = "MOON_PURPLE_COLOR")
+        @SuppressWarnings("unused")
+        public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
 }

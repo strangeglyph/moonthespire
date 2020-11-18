@@ -8,14 +8,13 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m14n.moonthespire.cards.AbstractMoonCard;
-import org.m14n.moonthespire.cards.DiscardDraw;
-import org.m14n.moonthespire.cards.MoonDrop;
 import org.m14n.moonthespire.relics.PaleWhiteSphere;
 import org.m14n.moonthespire.relics.TidalLock;
 
@@ -27,6 +26,19 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber,
         OnStartBattleSubscriber {
     public static final Logger LOGGER = LogManager.getLogger(Mod.class.getName());
     private static final String MOD_ID = "MoonTheSpire";
+
+    private Mod() {
+        BaseMod.subscribe(this);
+        BaseMod.addColor(MoonCharacter.Enums.MOON_PURPLE,
+                Colors.MOON_PURPLE_BG, Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_BASIC,
+                Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_TRAIL,
+                Colors.MOON_PURPLE_GLOW,
+                cardPath("bg/attack.png"), cardPath("bg/skill.png"),
+                cardPath("bg/power.png"), cardPath("bg/costs.png"),
+                cardPath("bg/attack-large.png"), cardPath("bg/skill-large.png"),
+                cardPath("bg/power-larger.png"), cardPath("bg/costs-large.png"),
+                cardPath("text-energy-icon.png"));
+    }
 
     public static String cardPath(String resourcePath) {
         return MOD_ID + "/images/cards/" + resourcePath;
@@ -75,19 +87,6 @@ public class Mod implements EditCharactersSubscriber, EditCardsSubscriber,
     public static void initialize() {
         LOGGER.info("M14N presents: ~*~ Moon The Spire ~*~");
         new Mod();
-    }
-
-    private Mod() {
-        BaseMod.subscribe(this);
-        BaseMod.addColor(MoonCharacter.Enums.MOON_PURPLE,
-                Colors.MOON_PURPLE_BG, Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_BASIC,
-                Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_BASIC, Colors.MOON_PURPLE_TRAIL,
-                Colors.MOON_PURPLE_GLOW,
-                cardPath("bg/attack.png"), cardPath("bg/skill.png"),
-                cardPath("bg/power.png"), cardPath("bg/costs.png"),
-                cardPath("bg/attack-large.png"), cardPath("bg/skill-large.png"),
-                cardPath("bg/power-larger.png"), cardPath("bg/costs-large.png"),
-                cardPath("text-energy-icon.png"));
     }
 
     @Override
