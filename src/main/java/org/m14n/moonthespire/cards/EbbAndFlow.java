@@ -35,15 +35,13 @@ public class EbbAndFlow extends AbstractMoonCard implements PhaseChangeSubscribe
     private static final CardColor COLOR = MoonCharacter.Enums.MOON_PURPLE;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardStrings cardStrings;
 
     public EbbAndFlow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        PhaseSystem.subscribe(this);
         this.baseDamage = 5;
         this.isMultiDamage = true;
         this.exhaust = true;
-
+        PhaseSystem.subscribe(this);
     }
 
     @Override
@@ -53,7 +51,6 @@ public class EbbAndFlow extends AbstractMoonCard implements PhaseChangeSubscribe
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // Create an int which equals to your current energy.
         int count = AbstractDungeon.player.hand.size();
 
         //Waxing
@@ -80,7 +77,6 @@ public class EbbAndFlow extends AbstractMoonCard implements PhaseChangeSubscribe
             this.upgradeName();
             this.exhaust = false;
             this.upgradeDamage(2);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }
@@ -89,16 +85,14 @@ public class EbbAndFlow extends AbstractMoonCard implements PhaseChangeSubscribe
         return new EbbAndFlow();
     }
 
-    static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("EbbAndFlow");
-    }
-
     @Override
     public void onPhaseChange() {
         if (PhaseSystem.isWaxing()) {
             target = CardTarget.ENEMY;
+            type = CardType.ATTACK;
         } else {
             target = CardTarget.NONE;
+            type = CardType.SKILL;
         }
     }
 }

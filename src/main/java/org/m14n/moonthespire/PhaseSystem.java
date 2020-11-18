@@ -97,6 +97,8 @@ public class PhaseSystem {
     static void reset() {
         isWaxing = false;
         isWaning = false;
+        wasWaxing = false;
+        wasWaning = false;
         update();
     }
 }
